@@ -11,6 +11,8 @@ docker-compose down
 
 # Docker cleanup commands https://gist.github.com/johndatserakis/0002d9aded5778f9d0589a23ce1e08d4
 
+# Below are commands to be run when the containers are running
+
 # Run tests
 docker-compose exec api pytest .
 
@@ -18,7 +20,7 @@ docker-compose exec api pytest .
 docker-compose exec api python ./scripts/get_state_data.py
 
 # Add a dependency
-docker-compose exec api poetry add pymediawiki
+docker-compose exec api poetry add email-validator
 ```
 
 - http://localhost:8002/ping

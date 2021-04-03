@@ -9,14 +9,21 @@ services:
     ports:
       - 8002:8000
     environment:
-      - DATABASE_URL=postgresql://user:password@db/docker
-  db:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=docker
+    depends_on:
+      - postgres
+
+  postgres:
     image: postgres:12.1-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=postgres
       - POSTGRES_DB=docker
     ports:
       - "5432:5432"
