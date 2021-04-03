@@ -1,6 +1,6 @@
 from typing import List
-import app.crud.state as crud
-from app.models.state import State
+import crud.state as crud
+from models.state import State
 from fastapi import APIRouter, HTTPException, Path
 
 router = APIRouter()

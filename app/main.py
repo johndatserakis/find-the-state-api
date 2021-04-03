@@ -1,5 +1,5 @@
-from app.routes import state, ping
-from app.db.db import database, engine, metadata
+from routes import state, ping
+from db.db import database, engine, metadata
 from fastapi import FastAPI
 
 metadata.create_all(engine)
