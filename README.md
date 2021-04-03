@@ -18,7 +18,7 @@ docker-compose exec api pytest .
 docker-compose exec api python ./scripts/get_state_data.py
 
 # Add a dependency
-docker-compose exec api poetry add wikipedia
+docker-compose exec api poetry add pymediawiki
 ```
 
 - http://localhost:8002/ping

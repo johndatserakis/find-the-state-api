@@ -1,17 +1,9 @@
-print("Hello World!")
-
-"""
-1. Iterate over array of states
-2. For each state, call an API endpoint
-3. Retrive the data and store it in a new array.
-  - The values are name, summary, link
-4. Print result
-"""
-
-import json
-import wikipedia
+from mediawiki import MediaWiki, DisambiguationError
 import csv
+import json
 import re
+
+wikipedia = MediaWiki()
 
 # https://stackoverflow.com/a/37538815/8014660
 def remove_text_between_parens(text):
@@ -20,7 +12,7 @@ def remove_text_between_parens(text):
         text, n = re.subn(
             r"\([^()]*\)", "", text
         )  # Remove non-nested/flat balanced parts
-        text = re.sub("\s{2,}", " ", text) ## Remove remaining extra double-space
+        text = re.sub("\s{2,}", " ", text)  ## Remove remaining extra double-space
     return text
 
 
@@ -32,11 +24,24 @@ states_data = []
 for state in _states:
     state_data = {}
 
-    article = wikipedia.page(state)
+    p = None
+
+    try:
+        p = wikipedia.page(state)
+    except DisambiguationError as e:
+        # In case of DisambiguationError try to look for a title with "state" in it
+        for opt in e.options:
+            if "state" in opt:
+                p = wikipedia.page(opt)
+                break
+
+    if p is None:
+        raise ValueError("No matching article")
+
     state_data["name"] = state
-    state_data["summary"] = remove_text_between_parens(article.summary)
-    state_data["link"] = article.url
-    state_data["image"] = article.images[0]
+    state_data["summary"] = remove_text_between_parens(p.summary)
+    state_data["link"] = p.url
+    state_data["image"] = p.images[0]
 
     states_data.append(state_data)
 

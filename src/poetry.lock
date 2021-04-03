@@ -202,6 +202,18 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pymediawiki"
+version = "0.7.0"
+description = "Wikipedia and MediaWiki API wrapper for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+beautifulsoup4 = "*"
+requests = ">=2.0.0,<3.0.0"
+
+[[package]]
 name = "pyparsing"
 version = "2.4.7"
 description = "Python parsing module"
@@ -367,7 +379,7 @@ requests = ">=2.0.0,<3.0.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9375176f20e02e2a858c7193cf5a61404064bdb74ea84794570896af3bd47137"
+content-hash = "39b5a9df45f16edaef7d0a4e0cacbd3ff73b7fbe6b9477b86421bad366fddfc0"
 
 [metadata.files]
 asyncpg = [
@@ -516,6 +528,10 @@ pydantic = [
     {file = "pydantic-1.8.1-cp39-cp39-win_amd64.whl", hash = "sha256:e8bc082afef97c5fd3903d05c6f7bb3a6af9fc18631b4cc9fedeb4720efb0c58"},
     {file = "pydantic-1.8.1-py3-none-any.whl", hash = "sha256:e3f8790c47ac42549dc8b045a67b0ca371c7f66e73040d0197ce6172b385e520"},
     {file = "pydantic-1.8.1.tar.gz", hash = "sha256:26cf3cb2e68ec6c0cfcb6293e69fb3450c5fd1ace87f46b64f678b0d29eac4c3"},
+]
+pymediawiki = [
+    {file = "pymediawiki-0.7.0-py3-none-any.whl", hash = "sha256:b177920474533a19db39501ac4234c62d7d57f0bd66f781f6d2060cd97a70bd6"},
+    {file = "pymediawiki-0.7.0.tar.gz", hash = "sha256:a5ad9ab5729c8a9ee50acda1d80c5bae8c095c5c27a185f829ee50e6d2e3f7f8"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
