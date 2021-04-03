@@ -15,17 +15,8 @@ SQLALCHEMY_DATABASE_URL = (
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
 
-# # Build tables
-# states = Table(
-#     "states",
-#     metadata,
-#     Column("id", Integer, primary_key=True),
-#     Column("name", String),
-#     Column("summary", String),
-#     Column("link", String),
-#     Column("image", String),
-#     Column("created_date", DateTime, default=func.now(), nullable=False),
-# )
+# Attach all tables built by migrations here
+states = Table("states", metadata, autoload=True, autoload_with=engine)
 
 # databases query builder
 database = Database(SQLALCHEMY_DATABASE_URL)
