@@ -364,22 +364,10 @@ category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
-[[package]]
-name = "wikipedia"
-version = "1.4.0"
-description = "Wikipedia API for Python"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-beautifulsoup4 = "*"
-requests = ">=2.0.0,<3.0.0"
-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "39b5a9df45f16edaef7d0a4e0cacbd3ff73b7fbe6b9477b86421bad366fddfc0"
+content-hash = "be9cd4dd0f153b75681c4a3a51c23b73566a317e32c01c4a0596d49d9f893184"
 
 [metadata.files]
 asyncpg = [
@@ -607,7 +595,4 @@ websockets = [
     {file = "websockets-8.1-cp38-cp38-win32.whl", hash = "sha256:e898a0863421650f0bebac8ba40840fc02258ef4714cb7e1fd76b6a6354bda36"},
     {file = "websockets-8.1-cp38-cp38-win_amd64.whl", hash = "sha256:f8a7bff6e8664afc4e6c28b983845c5bc14965030e3fb98789734d416af77c4b"},
     {file = "websockets-8.1.tar.gz", hash = "sha256:5c65d2da8c6bce0fca2528f69f44b2f977e06954c8512a952222cea50dad430f"},
-]
-wikipedia = [
-    {file = "wikipedia-1.4.0.tar.gz", hash = "sha256:db0fad1829fdd441b1852306e9856398204dc0786d2996dd2e0c8bb8e26133b2"},
 ]
