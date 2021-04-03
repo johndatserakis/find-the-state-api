@@ -1,16 +1,12 @@
-from sqlalchemy import Column, DateTime, Integer, String
-from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
-
-from .database import Base
+from pydantic import BaseModel, Field
 
 
-class State(Base):
-    __tablename__ = "states"
+class StateSchema(BaseModel):
+    name: str = Field(..., min_length=3, max_length=100)
+    summary: str = Field(..., min_length=3, max_length=10000)
+    link: str = Field(..., min_length=3, max_length=1000)
+    image: str = Field(..., min_length=3, max_length=1000)
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    summary = Column(String)
-    link = Column(String)
-    image = Column(String)
-    created_date = Column(DateTime, default=func.now(), nullable=False)
+
+class StateDB(StateSchema):
+    id: int
