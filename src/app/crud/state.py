@@ -1,4 +1,4 @@
-from app.db import states, database
+from app.db.db import states, database
 
 
 async def get_by_id(id: int):

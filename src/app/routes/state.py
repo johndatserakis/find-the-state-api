@@ -1,7 +1,6 @@
 from typing import List
-
-from .. import crud
-from app.models import State
+import app.crud.state as crud
+from app.models.state import State
 from fastapi import APIRouter, HTTPException, Path
 
 router = APIRouter()
@@ -16,7 +15,7 @@ async def read_states(id: int):
 
 
 @router.get("/{name}/", response_model=State)
-async def read_states(name: string):
+async def read_states(name: str):
     states = await crud.get_by_name(name)
     if not states:
         raise HTTPException(status_code=404, detail="State not found")

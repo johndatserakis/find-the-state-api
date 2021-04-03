@@ -17,7 +17,7 @@ docker-compose down
 docker-compose exec api pytest .
 
 # Run a specific file. Make sure the container is running
-docker-compose exec api python ./scripts/get_state_data.py
+docker-compose exec api python ./program_scripts/get_state_data.py
 
 # Add a dependency
 docker-compose exec api poetry add email-validator

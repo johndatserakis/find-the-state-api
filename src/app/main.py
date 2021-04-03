@@ -1,5 +1,5 @@
-from app.routes import states, ping
-from app.db import database, engine, metadata
+from app.routes import state, ping
+from app.db.db import database, engine, metadata
 from fastapi import FastAPI
 
 metadata.create_all(engine)
@@ -18,4 +18,4 @@ async def shutdown():
 
 
 app.include_router(ping.router, tags=["health"])
-app.include_router(states.router, prefix="/states", tags=["states"])
+app.include_router(state.router, prefix="/states", tags=["states"])
