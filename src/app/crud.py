@@ -1,8 +1,12 @@
-from app.models import StateSchema
 from app.db import states, database
 
 
-async def get(name: str):
+async def get_by_id(id: int):
+    query = states.select().where(id == states.c.id)
+    return await database.fetch_one(query=query)
+
+
+async def get_by_name(name: str):
     query = states.select().where(name == states.c.name)
     return await database.fetch_one(query=query)
 

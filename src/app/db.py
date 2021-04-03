@@ -7,7 +7,6 @@ POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
-
 SQLALCHEMY_DATABASE_URL = (
     f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}/{POSTGRES_DB}"
 )
@@ -15,14 +14,16 @@ SQLALCHEMY_DATABASE_URL = (
 # SQLAlchemy
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
+
+# Build tables
 states = Table(
     "states",
     metadata,
     Column("id", Integer, primary_key=True),
-    Column("name", String(100)),
-    Column("summary", String(10000)),
-    Column("link", String(1000)),
-    Column("image", String(1000)),
+    Column("name", String),
+    Column("summary", String),
+    Column("link", String),
+    Column("image", String),
     Column("created_date", DateTime, default=func.now(), nullable=False),
 )
 

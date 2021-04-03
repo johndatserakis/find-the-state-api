@@ -1,22 +1,28 @@
 from typing import List
 
 from .. import crud
-from app.models import StateDB, StateSchema
+from app.models import State
 from fastapi import APIRouter, HTTPException, Path
 
 router = APIRouter()
 
 
-@router.get("/{id}/", response_model=StateDB)
-async def read_states(
-    id: int = Path(..., gt=0),
-):
-    states = await crud.get(id)
+@router.get("/{id}/", response_model=State)
+async def read_states(id: int):
+    states = await crud.get_by_id(id)
     if not states:
         raise HTTPException(status_code=404, detail="State not found")
     return states
 
 
-@router.get("/", response_model=List[StateDB])
-async def read_all_statess():
+@router.get("/{name}/", response_model=State)
+async def read_states(name: string):
+    states = await crud.get_by_name(name)
+    if not states:
+        raise HTTPException(status_code=404, detail="State not found")
+    return states
+
+
+@router.get("/", response_model=List[State])
+async def read_all_states():
     return await crud.get_all()

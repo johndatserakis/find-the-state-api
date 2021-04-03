@@ -1,12 +1,14 @@
-from pydantic import BaseModel, Field
+import datetime
+from pydantic import BaseModel
 
 
-class StateSchema(BaseModel):
-    name: str = Field(..., min_length=3, max_length=100)
-    summary: str = Field(..., min_length=3, max_length=10000)
-    link: str = Field(..., min_length=3, max_length=1000)
-    image: str = Field(..., min_length=3, max_length=1000)
+class StateBase(BaseModel):
+    name: str
+    summary: str
+    link: str
+    image: str
 
 
-class StateDB(StateSchema):
+class State(StateBase):
     id: int
+    created_date: datetime.datetime

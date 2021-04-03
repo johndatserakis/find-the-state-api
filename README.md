@@ -34,3 +34,9 @@ First time using Python
 ### Links
 
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/)
+
+## [Pydantic](https://pydantic-docs.helpmanual.io/usage/types/)
+
+## [encode/databases](https://github.com/encode/databases)
+
+## [SQLAlchemy Core](https://docs.sqlalchemy.org/en/14/core/tutorial.html)
