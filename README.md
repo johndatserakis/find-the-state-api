@@ -29,11 +29,15 @@ docker-compose exec api poetry add email-validator
 
 ## Python
 
-First time using Python
+### [Packages](https://docs.python.org/3/tutorial/modules.html#packages)
 
 ### Links
 
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/)
+
+## FastAPI
+
+### [Folder Structure](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
 
 ## [Pydantic](https://pydantic-docs.helpmanual.io/usage/types/)
 
