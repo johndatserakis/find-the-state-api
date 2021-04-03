@@ -15,6 +15,7 @@ pytest = "5.3.2"
 requests = "2.22.0"
 pymediawiki = "^0.7.0"
 email-validator = "^1.1.2"
+alembic = "^1.5.8"
 
 [tool.poetry.dev-dependencies]
 
