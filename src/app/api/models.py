@@ -6,7 +6,6 @@ class StateSchema(BaseModel):
     summary: str = Field(..., min_length=3, max_length=10000)
     link: str = Field(..., min_length=3, max_length=1000)
     image: str = Field(..., min_length=3, max_length=1000)
-    image_alt: str = Field(..., min_length=3, max_length=1000)
 
 
 class StateDB(StateSchema):

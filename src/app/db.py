@@ -1,7 +1,6 @@
 import os
 
-from sqlalchemy import (Column, DateTime, Integer, MetaData, String, Table,
-                        create_engine)
+from sqlalchemy import Column, DateTime, Integer, MetaData, String, Table, create_engine
 from sqlalchemy.sql import func
 
 from databases import Database
@@ -19,7 +18,6 @@ states = Table(
     Column("summary", String(10000)),
     Column("link", String(1000)),
     Column("image", String(1000)),
-    Column("image_alt", String(1000)),
     Column("created_date", DateTime, default=func.now(), nullable=False),
 )
 

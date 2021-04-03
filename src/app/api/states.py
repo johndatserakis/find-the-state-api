@@ -8,7 +8,9 @@ router = APIRouter()
 
 
 @router.get("/{id}/", response_model=StateDB)
-async def read_states(id: int = Path(..., gt=0),):
+async def read_states(
+    id: int = Path(..., gt=0),
+):
     states = await crud.get(id)
     if not states:
         raise HTTPException(status_code=404, detail="State not found")
