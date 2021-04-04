@@ -9,6 +9,8 @@ Find all the States in the contiguous USA on a map. Simple enough.
 ## Run
 
 ```bash
+# If your running this for the first time, make sure to run the migrations
+
 # Start
 docker-compose up -d --build
 
@@ -21,13 +23,16 @@ docker-compose down
 ## Commands While Running
 
 ```bash
-# Below are commands to be run when the containers are running
+# Below are commands to be run when the containers are running.
+
+# Run migrations
+docker-compose exec api poetry run alembic upgrade head
 
 # Run tests
 docker-compose exec api pytest .
 
 # Run a specific script
-docker-compose exec api python ./scripts/get_state_data.py
+docker-compose exec api python ./program_scripts/get_state_data.py
 
 # Add a dependency
 docker-compose exec api poetry add alembic
@@ -37,10 +42,10 @@ docker-compose exec api poetry add alembic
 
 ```bash
 # Create migration (called a "revision")
-poetry run alembic revision -m "Create state table"
+docker-compose exec api poetry run alembic revision -m "Create state table"
 
 # Run migrations
-poetry run alembic upgrade head
+docker-compose exec api poetry run alembic upgrade head
 ```
 
 ## View Running API

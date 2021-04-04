@@ -12,11 +12,10 @@ SQLALCHEMY_DATABASE_URL = (
 )
 
 # SQLAlchemy
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"options": "-c timezone=utc"}
+)
 metadata = MetaData()
-
-# Attach all tables built by migrations here
-states = Table("states", metadata, autoload=True, autoload_with=engine)
 
 # databases query builder
 database = Database(SQLALCHEMY_DATABASE_URL)

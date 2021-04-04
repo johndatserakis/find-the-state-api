@@ -1,14 +1,4 @@
-import datetime
-from pydantic import BaseModel
+from sqlalchemy import Table
+from db.db import SQLALCHEMY_DATABASE_URL, engine, metadata
 
-
-class StateBase(BaseModel):
-    name: str
-    summary: str
-    link: str
-    image: str
-
-
-class State(StateBase):
-    id: int
-    created_date: datetime.datetime
+states = Table("states", metadata, autoload=True, autoload_with=engine)

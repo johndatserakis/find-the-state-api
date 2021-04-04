@@ -19,6 +19,7 @@ services:
   postgres:
     image: postgres:12.1-alpine
     volumes:
+      - ./app/postgres_scripts:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=user
