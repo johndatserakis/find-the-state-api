@@ -1,9 +1,9 @@
+from asyncpg.exceptions import UniqueViolationError
+from fastapi import APIRouter, HTTPException, Path
+from schemas.state import State, StateCreate, StateUpdate, StateDelete
 from typing import List
 import crud.state as crud
-from schemas.state import State, StateCreate, StateUpdate, StateDelete
-from fastapi import APIRouter, HTTPException, Path
 import uuid
-from asyncpg.exceptions import UniqueViolationError
 
 router = APIRouter()
 
@@ -13,10 +13,10 @@ async def read(id: uuid.UUID):
     """
     Get item by id.
     """
-    state = await crud.get(id)
-    if not state:
+    item = await crud.get(id)
+    if not item:
         raise HTTPException(status_code=404, detail="Item not found")
-    return state
+    return item
 
 
 @router.get("/name/{name}", response_model=State)
@@ -24,10 +24,10 @@ async def read_by_name(name: str):
     """
     Get item by name.
     """
-    state = await crud.get_by_name(name)
-    if not state:
+    item = await crud.get_by_name(name)
+    if not item:
         raise HTTPException(status_code=404, detail="Item not found")
-    return state
+    return item
 
 
 @router.get("/", response_model=List[State])
@@ -44,8 +44,8 @@ async def create(payload: StateCreate):
     Create item.
     """
     try:
-        state_id = await crud.create(payload)
-        new_row = await crud.get(state_id)
+        item_id = await crud.create(payload)
+        new_row = await crud.get(item_id)
     except UniqueViolationError:
         raise HTTPException(status_code=409, detail="Item already exists")
     except Exception:
@@ -59,13 +59,13 @@ async def update(id: uuid.UUID, payload: StateUpdate):
     """
     Update item.
     """
-    state = await crud.get(id)
-    if not state:
+    item = await crud.get(id)
+    if not item:
         raise HTTPException(status_code=404, detail="Item not found")
 
     try:
-        state_id = await crud.update(id, payload)
-        updated_row = await crud.get(state_id)
+        item_id = await crud.update(id, payload)
+        updated_row = await crud.get(item_id)
     except Exception:
         raise HTTPException(status_code=500, detail="Error processing request")
 

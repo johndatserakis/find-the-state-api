@@ -1,6 +1,6 @@
+from pydantic import BaseModel
 import datetime
 import uuid
-from pydantic import BaseModel
 
 
 class StateBase(BaseModel):
