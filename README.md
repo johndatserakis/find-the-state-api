@@ -46,6 +46,13 @@ docker-compose exec api poetry run alembic revision -m "Create state table"
 
 # Run migrations
 docker-compose exec api poetry run alembic upgrade head
+
+# Downgrade 1 migration file
+docker-compose exec api poetry run alembic downgrade -1
+
+# View list of migration files
+docker-compose exec api poetry run alembic history
+docker-compose exec api poetry run alembic downgrade $Id
 ```
 
 ## View Running API

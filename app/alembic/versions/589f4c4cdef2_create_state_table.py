@@ -28,9 +28,9 @@ def upgrade():
             server_default=sa.text("uuid_generate_v4()"),
         ),
         sa.Column("name", sa.String, unique=True, index=True, nullable=False),
-        sa.Column("summary", sa.String, index=True, nullable=False),
-        sa.Column("link", sa.String, index=True, nullable=False),
-        sa.Column("image", sa.String, index=True, nullable=False),
+        sa.Column("summary", sa.Text, nullable=False),
+        sa.Column("link", sa.String, nullable=False),
+        sa.Column("image", sa.String, nullable=False),
         sa.Column("updated_date", sa.DateTime),
         sa.Column(
             "created_date", sa.DateTime, server_default=sa.text("now()"), nullable=False
