@@ -1,8 +1,1 @@
-SELECT 'CREATE DATABASE mydb'
-WHERE NOT EXISTS (SELECT
-FROM pg_database
-WHERE datname = 'mydb')
-\gexec
-
-CREATE EXTENSION
-IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

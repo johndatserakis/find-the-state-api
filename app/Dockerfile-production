@@ -4,6 +4,17 @@ FROM python:3.8.1-alpine
 # set work directory
 WORKDIR /usr/src/app
 
+# Gather ENV
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+ARG POSTGRES_HOST
+ARG POSTGRES_DB
+
+ENV POSTGRES_USER ${POSTGRES_USER}
+ENV POSTGRES_PASSWORD ${POSTGRES_PASSWORD}
+ENV POSTGRES_HOST ${POSTGRES_HOST}
+ENV POSTGRES_DB ${POSTGRES_DB}
+
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -29,4 +40,7 @@ COPY ./pyproject.toml ./poetry.lock* /usr/src/app/
 RUN poetry install --no-root --no-dev
 
 # copy project
-COPY . /usr/src/app/
+COPY  . /usr/src/app/
+
+# Run
+CMD uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 8000
