@@ -27,6 +27,10 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: find-the-state-api
         IMAGE_TAG: ${{ github.sha }}
+        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+        POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
       run: |
         docker build \
           -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \

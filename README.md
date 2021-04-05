@@ -78,7 +78,7 @@ docker build \
 --build-arg POSTGRES_DB=$POSTGRES_DB
 
 # Run what you built locally to test
-docker run -dit --publish 8000:8000 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+docker run -dit --publish 8000:8000 --restart unless-stopped $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 # Lastly push to your container registry of choice
 docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
