@@ -1,10 +1,21 @@
 from routes import state, ping
 from db.db import database, engine, metadata
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 metadata.create_all(engine)
 
 app = FastAPI()
+
+# https://fastapi.tiangolo.com/tutorial/cors/?h=%20cors#use-corsmiddleware
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
