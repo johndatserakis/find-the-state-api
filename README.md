@@ -60,9 +60,9 @@ docker-compose exec api poetry run alembic downgrade $Id
 
 ## View Running API
 
-- http://localhost:8000/ping
+- http://localhost:8000/api/v1/ping
 - http://localhost:8000/docs
-- http://localhost:8000/states
+- http://localhost:8000/api/v1/states
 
 ## Build for Production
 

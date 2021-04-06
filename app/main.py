@@ -28,5 +28,7 @@ async def shutdown():
     await database.disconnect()
 
 
-app.include_router(ping.router, tags=["health"])
-app.include_router(state.router, prefix="/states", tags=["states"])
+prefix = "/api/v1"
+
+app.include_router(ping.router, prefix=f"{prefix}", tags=["health"])
+app.include_router(state.router, prefix=f"{prefix}/states", tags=["states"])
