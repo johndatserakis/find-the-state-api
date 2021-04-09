@@ -1,4 +1,4 @@
-# Find The State API
+# Find the State API
 
 Find all the States in the contiguous USA on a map. Simple enough.
 
@@ -60,9 +60,8 @@ docker-compose exec api poetry run alembic downgrade $Id
 
 ## View Running API
 
-- http://localhost:8000/api/v1/ping
 - http://localhost:8000/docs
-- http://localhost:8000/api/v1/states
+- http://localhost:8000/api/v1/health
 
 ## Build for Production
 
