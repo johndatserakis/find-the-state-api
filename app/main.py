@@ -5,7 +5,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 metadata.create_all(engine)
 
-app = FastAPI()
+app = FastAPI(
+    title="Find the State API",
+    description="",
+    version="0.0.1",
+)
 
 # https://fastapi.tiangolo.com/tutorial/cors/?h=%20cors#use-corsmiddleware
 origins = ["*"]
@@ -32,3 +36,6 @@ prefix = "/api/v1"
 
 app.include_router(health.router, prefix=f"{prefix}", tags=["health"])
 app.include_router(state.router, prefix=f"{prefix}/states", tags=["states"])
+
+# Keep user routes in its own file
+from routes import user

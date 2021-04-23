@@ -35,7 +35,7 @@ docker-compose exec api pytest .
 docker-compose exec api python ./program_scripts/get_state_data.py
 
 # Add a dependency
-docker-compose exec api poetry add alembic
+docker-compose exec api poetry add psycopg2
 
 # Create poetry.lock file
 docker-compose exec api poetry lock
@@ -45,7 +45,7 @@ docker-compose exec api poetry lock
 
 ```bash
 # Create migration (called a "revision")
-docker-compose exec api poetry run alembic revision -m "Create state table"
+docker-compose exec api poetry run alembic revision -m "Create FastAPI-Users user table"
 
 # Run migrations
 docker-compose exec api poetry run alembic upgrade head
@@ -114,3 +114,9 @@ Below are some links I saved while learning Python.
 ## [encode/databases](https://github.com/encode/databases)
 
 ## [SQLAlchemy Core](https://docs.sqlalchemy.org/en/14/core/tutorial.html)
+
+## [FastAPI Users](https://frankie567.github.io/fastapi-users/)
+
+I decided to go with FastAPI users for future user handling. Currently there isn't user registration offered in the frontend.
+
+- [FastAPI Users and Alembic](https://harrisonmorgan.dev/2021/02/15/getting-started-with-fastapi-users-and-alembic/)
