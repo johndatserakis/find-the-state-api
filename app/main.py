@@ -5,7 +5,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 metadata.create_all(engine)
 
-app = FastAPI()
+app = FastAPI(
+    title="Find the State API",
+    description="",
+    version="0.0.1",
+)
 
 # https://fastapi.tiangolo.com/tutorial/cors/?h=%20cors#use-corsmiddleware
 origins = ["*"]

@@ -7,7 +7,7 @@ authors = ["John Datserakis <johndatserakis@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 asyncpg = "0.22.0"
-databases = {version = "0.2.6", extras = ["postgresql"]}
+databases = {version = "0.4.3", extras = ["postgresql"]}
 fastapi = "0.63.0"
 SQLAlchemy = "1.3.24"
 uvicorn = "0.13.4"
@@ -16,6 +16,7 @@ requests = "2.22.0"
 pymediawiki = "^0.7.0"
 email-validator = "^1.1.2"
 alembic = "^1.5.8"
+psycopg2 = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 

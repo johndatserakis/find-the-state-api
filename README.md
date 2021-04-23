@@ -35,7 +35,7 @@ docker-compose exec api pytest .
 docker-compose exec api python ./program_scripts/get_state_data.py
 
 # Add a dependency
-docker-compose exec api poetry add alembic
+docker-compose exec api poetry add psycopg2
 
 # Create poetry.lock file
 docker-compose exec api poetry lock
