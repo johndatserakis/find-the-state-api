@@ -35,7 +35,7 @@ docker-compose exec api pytest .
 docker-compose exec api python ./program_scripts/get_state_data.py
 
 # Add a dependency
-docker-compose exec api poetry add psycopg2
+docker-compose exec api poetry add python-dotenv
 
 # Create poetry.lock file
 docker-compose exec api poetry lock
@@ -45,7 +45,7 @@ docker-compose exec api poetry lock
 
 ```bash
 # Create migration (called a "revision")
-docker-compose exec api poetry run alembic revision -m "Create state table"
+docker-compose exec api poetry run alembic revision -m "Create score table"
 
 # Run migrations
 docker-compose exec api poetry run alembic upgrade head
@@ -98,7 +98,8 @@ docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 ## Notes
 
-Below are some links I saved while learning Python.
+- There is a very rudimentary auth token "check" on the `score` `post` request. Don't do something like this in a production app. Whenever I want to secure my API's I use a `JWT` token that a user receives after registering and logging in. That is out of scope for this project, but may be added in the future. I have another [open sourced API](https://github.com/johndatserakis/koa-vue-notes-api) that features this if you'd like to recreate [that flow](https://github.com/johndatserakis/koa-vue-notes-api#user-authentication-process). I'll probably get around to adding it to this app at some point - I just have to draw the line somewhere, ha.
+- Below are some links I saved while learning Python.
 
 ## Python
 

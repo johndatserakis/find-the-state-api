@@ -1,4 +1,4 @@
-from routes import state, health
+from routes import health, score, state
 from db.db import database, engine, metadata
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,3 +36,4 @@ prefix = "/api/v1"
 
 app.include_router(health.router, prefix=f"{prefix}", tags=["health"])
 app.include_router(state.router, prefix=f"{prefix}/states", tags=["states"])
+app.include_router(score.router, prefix=f"{prefix}/scores", tags=["scores"])

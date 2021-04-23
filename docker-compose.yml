@@ -8,11 +8,6 @@ services:
       - ./app/:/usr/src/app/
     ports:
       - 8000:8000
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_HOST=postgres
-      - POSTGRES_DB=docker
     depends_on:
       - postgres
 

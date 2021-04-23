@@ -3,6 +3,7 @@ from logging.config import fileConfig
 from sqlalchemy import create_engine, engine_from_config
 from sqlalchemy import pool
 from alembic import context
+from utils.env import get_settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -25,10 +26,10 @@ target_metadata = None
 
 # https://allan-simon.github.io/blog/posts/python-alembic-with-environment-variables/
 def get_url():
-    POSTGRES_USER = os.getenv("POSTGRES_USER")
-    POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
-    POSTGRES_HOST = os.getenv("POSTGRES_HOST")
-    POSTGRES_DB = os.getenv("POSTGRES_DB")
+    POSTGRES_USER = get_settings().postgres_user
+    POSTGRES_PASSWORD = get_settings().postgres_password
+    POSTGRES_HOST = get_settings().postgres_host
+    POSTGRES_DB = get_settings().postgres_db
     return f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}/{POSTGRES_DB}"
 
 
