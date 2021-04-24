@@ -30,7 +30,7 @@ async def read_by_name(name: str):
     return item
 
 
-@router.get("/", response_model=List[State])
+@router.get("", response_model=List[State])
 async def read_all():
     """
     Get all items
@@ -38,7 +38,7 @@ async def read_all():
     return await crud.get_all()
 
 
-@router.post("/", response_model=State, status_code=201)
+@router.post("", response_model=State, status_code=201)
 async def create(payload: StateCreate):
     """
     Create item.

@@ -2,7 +2,7 @@
 
 Find all the States in the contiguous USA on a map. Simple enough.
 
-- [Live URL](https://jolly-murdock-43b71d.netlify.app/)
+- [Live URL](https://find-the-state.netlify.app/)
 - [Frontend UI GitHub](https://github.com/johndatserakis/find-the-state-ui) - Built with TypeScript and React
 - [Backend API GitHub](https://github.com/johndatserakis/find-the-state-api) - Built with Python and FastAPI
 
@@ -98,7 +98,7 @@ docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 ## Notes
 
-- There is a very rudimentary auth token "check" on the `score` `post` request. Don't do something like this in a production app. Whenever I want to secure my API's I use a `JWT` token that a user receives after registering and logging in. That is out of scope for this project, but may be added in the future. I have another [open sourced API](https://github.com/johndatserakis/koa-vue-notes-api) that features this if you'd like to recreate [that flow](https://github.com/johndatserakis/koa-vue-notes-api#user-authentication-process). I'll probably get around to adding it to this app at some point - I just have to draw the line somewhere, ha.
+- There is a very rudimentary token "check" on the `score` `post` request. It provides no protection. Don't do something like this in production. Whenever I want to secure my API's I use a `JWT` token that a user receives after registering and logging in. That is out of scope for this project currently, but may be added in the future. I have another [open sourced API](https://github.com/johndatserakis/koa-vue-notes-api) that features this if you'd like to recreate [that flow](https://github.com/johndatserakis/koa-vue-notes-api#user-authentication-process). I'll probably get around to adding it to this app at some point - I just have to draw the line somewhere concerning the development of this project, ha.
 - Below are some links I saved while learning Python.
 
 ## Python

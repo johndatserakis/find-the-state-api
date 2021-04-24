@@ -1,10 +1,18 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, StrRegexError, validator
 import datetime
 import uuid
+import re
 
 
 class ScoreBase(BaseModel):
     score: str
+
+    @validator("score")
+    def matches_regex(cls, v):
+        regex = r"\d\d:\d\d:\d\d"
+        if not re.match(regex, v):
+            raise StrRegexError(pattern=regex)
+        return v
 
 
 class Score(ScoreBase):
@@ -13,7 +21,7 @@ class Score(ScoreBase):
 
 
 class ScoreCreate(ScoreBase):
-    pass
+    token: str
 
 
 class ScoreUpdate(ScoreBase):
