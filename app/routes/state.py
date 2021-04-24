@@ -38,48 +38,51 @@ async def read_all():
     return await crud.get_all()
 
 
-@router.post("", response_model=State, status_code=201)
-async def create(payload: StateCreate):
-    """
-    Create item.
-    """
-    try:
-        item_id = await crud.create(payload)
-        new_row = await crud.get(item_id)
-    except UniqueViolationError:
-        raise HTTPException(status_code=409, detail="Item already exists")
-    except Exception:
-        raise HTTPException(status_code=500, detail="Error processing request")
+# Commenting out the rest of the methods as they're not needed at this moment. They've been tested and do work
+# correctly - good to have for the future.
 
-    return new_row
+# @router.post("", response_model=State, status_code=201)
+# async def create(payload: StateCreate):
+#     """
+#     Create item.
+#     """
+#     try:
+#         item_id = await crud.create(payload)
+#         new_row = await crud.get(item_id)
+#     except UniqueViolationError:
+#         raise HTTPException(status_code=409, detail="Item already exists")
+#     except Exception:
+#         raise HTTPException(status_code=500, detail="Error processing request")
 
-
-@router.put("/{id}", response_model=State)
-async def update(id: uuid.UUID, payload: StateUpdate):
-    """
-    Update item.
-    """
-    item = await crud.get(id)
-    if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
-
-    try:
-        item_id = await crud.update(id, payload)
-        updated_row = await crud.get(item_id)
-    except Exception:
-        raise HTTPException(status_code=500, detail="Error processing request")
-
-    return updated_row
+#     return new_row
 
 
-@router.delete("/{id}", response_model=StateDelete)
-async def delete(id: uuid.UUID):
-    """
-    Delete item.
-    """
-    try:
-        await crud.delete(id)
-    except Exception:
-        raise HTTPException(status_code=500, detail="Error processing request")
+# @router.put("/{id}", response_model=State)
+# async def update(id: uuid.UUID, payload: StateUpdate):
+#     """
+#     Update item.
+#     """
+#     item = await crud.get(id)
+#     if not item:
+#         raise HTTPException(status_code=404, detail="Item not found")
 
-    return {"id": id}
+#     try:
+#         item_id = await crud.update(id, payload)
+#         updated_row = await crud.get(item_id)
+#     except Exception:
+#         raise HTTPException(status_code=500, detail="Error processing request")
+
+#     return updated_row
+
+
+# @router.delete("/{id}", response_model=StateDelete)
+# async def delete(id: uuid.UUID):
+#     """
+#     Delete item.
+#     """
+#     try:
+#         await crud.delete(id)
+#     except Exception:
+#         raise HTTPException(status_code=500, detail="Error processing request")
+
+#     return {"id": id}

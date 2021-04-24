@@ -5,6 +5,7 @@ from typing import List
 import crud.score as crud
 import uuid
 from utils.env import get_settings
+from utils.limiter import limiter
 
 router = APIRouter()
 
@@ -29,7 +30,8 @@ async def read_all():
 
 
 @router.post("", response_model=Score, status_code=201)
-async def create(payload: ScoreCreate):
+@limiter.limit("3/minute")
+async def create(request: Request, payload: ScoreCreate):
     """
     Create item.
     """

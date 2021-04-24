@@ -35,7 +35,7 @@ docker-compose exec api pytest .
 docker-compose exec api python ./program_scripts/get_state_data.py
 
 # Add a dependency
-docker-compose exec api poetry add python-dotenv
+docker-compose exec api poetry add slowapi
 
 # Create poetry.lock file
 docker-compose exec api poetry lock
@@ -77,7 +77,8 @@ docker build \
 --build-arg POSTGRES_USER=$POSTGRES_USER \
 --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
 --build-arg POSTGRES_HOST=$POSTGRES_HOST \
---build-arg POSTGRES_DB=$POSTGRES_DB
+--build-arg POSTGRES_DB=$POSTGRES_DB \
+--build-arg AUTH_SECRET=$AUTH_SECRET
 
 # Run what you built locally to test
 docker run -dit --publish 8000:8000 --restart unless-stopped $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

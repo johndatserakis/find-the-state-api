@@ -2,6 +2,9 @@ from routes import health, score, state
 from db.db import database, engine, metadata
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from utils.limiter import limiter
+from slowapi.errors import RateLimitExceeded
+from slowapi import _rate_limit_exceeded_handler
 
 metadata.create_all(engine)
 
@@ -10,6 +13,9 @@ app = FastAPI(
     description="",
     version="0.0.1",
 )
+
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # https://fastapi.tiangolo.com/tutorial/cors/?h=%20cors#use-corsmiddleware
 origins = ["*"]
