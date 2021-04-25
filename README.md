@@ -77,8 +77,7 @@ docker build \
 --build-arg POSTGRES_USER=$POSTGRES_USER \
 --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
 --build-arg POSTGRES_HOST=$POSTGRES_HOST \
---build-arg POSTGRES_DB=$POSTGRES_DB \
---build-arg AUTH_SECRET=$AUTH_SECRET
+--build-arg POSTGRES_DB=$POSTGRES_DB
 
 # Run what you built locally to test
 docker run -dit --publish 8000:8000 --restart unless-stopped $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -99,7 +98,6 @@ docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 ## Notes
 
-- There is a very rudimentary token "check" on the `score` `post` request. It provides no protection. Don't do something like this in production. Whenever I want to secure my API's I use a `JWT` token that a user receives after registering and logging in. That is out of scope for this project currently, but may be added in the future. I have another [open sourced API](https://github.com/johndatserakis/koa-vue-notes-api) that features this if you'd like to recreate [that flow](https://github.com/johndatserakis/koa-vue-notes-api#user-authentication-process). I'll probably get around to adding it to this app at some point - I just have to draw the line somewhere concerning the development of this project, ha.
 - Below are some links I saved while learning Python.
 
 ## Python

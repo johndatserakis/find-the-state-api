@@ -31,7 +31,6 @@ jobs:
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-        AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
       run: |
         docker build \
           -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
@@ -39,8 +38,7 @@ jobs:
           --build-arg POSTGRES_USER=$POSTGRES_USER \
           --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
           --build-arg POSTGRES_HOST=$POSTGRES_HOST \
-          --build-arg POSTGRES_DB=$POSTGRES_DB \
-          --build-arg AUTH_SECRET=$AUTH_SECRET
+          --build-arg POSTGRES_DB=$POSTGRES_DB
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker build \
           -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
@@ -48,6 +46,5 @@ jobs:
           --build-arg POSTGRES_USER=$POSTGRES_USER \
           --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
           --build-arg POSTGRES_HOST=$POSTGRES_HOST \
-          --build-arg POSTGRES_DB=$POSTGRES_DB \
-          --build-arg AUTH_SECRET=$AUTH_SECRET
+          --build-arg POSTGRES_DB=$POSTGRES_DB
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest

@@ -5,7 +5,6 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    auth_secret: str = ""
     postgres_user: str = ""
     postgres_password: str = ""
     postgres_host: str = ""
@@ -23,4 +22,4 @@ def get_settings():
     return settings
 
 
-# To use: get_settings().auth_secret
+# To use: get_settings().postgres_user

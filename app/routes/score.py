@@ -30,14 +30,11 @@ async def read_all():
 
 
 @router.post("", response_model=Score, status_code=201)
-@limiter.limit("3/minute")
+@limiter.limit("2/minute")
 async def create(request: Request, payload: ScoreCreate):
     """
     Create item.
     """
-    if payload.token != get_settings().auth_secret:
-        raise HTTPException(status_code=401, detail="Unauthorized")
-
     try:
         item_id = await crud.create(payload)
         new_row = await crud.get(item_id)

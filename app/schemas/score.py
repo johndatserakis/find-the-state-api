@@ -21,7 +21,7 @@ class Score(ScoreBase):
 
 
 class ScoreCreate(ScoreBase):
-    token: str
+    pass
 
 
 class ScoreUpdate(ScoreBase):
