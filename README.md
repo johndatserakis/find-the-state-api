@@ -95,6 +95,7 @@ docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 - pymediawiki
 - Poetry
 - PostgreSQL
+- [slowapi](https://github.com/laurentS/slowapi)
 
 ## Notes
 

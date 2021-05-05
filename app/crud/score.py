@@ -17,9 +17,7 @@ async def get_all():
 
 
 async def create(payload: ScoreCreate):
-    query = table.insert().values(
-        score=payload.score,
-    )
+    query = table.insert().values(score=payload.score, streak_high=payload.streak_high)
     return await database.execute(query=query)
 
 

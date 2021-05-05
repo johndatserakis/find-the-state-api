@@ -6,6 +6,7 @@ import re
 
 class ScoreBase(BaseModel):
     score: str
+    streak_high: int
 
     @validator("score")
     def matches_regex(cls, v):
